@@ -11,4 +11,8 @@ Route::get('/hello', function () {
     return 'Hello, Mahek!';
 });
 
-Route::get('/users', [UserController::class,'index']);
+Route::get('/users', [UserController::class, 'index']);
+Route::post('/submit', [UserController::class, 'submit']);
+Route::get('/form', function () {
+    return view('form');
+});

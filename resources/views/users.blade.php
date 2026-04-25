@@ -1,7 +1,7 @@
 <h1>User Page</h1>
 
 @if (count($manushjon) > 0)
-    <strong>Total User: {{ count($manushjon) }}</strong>
+    <strong>Total User: {{ count($manushjon) }}</strong><br><br>
     @foreach ($manushjon as $manush)
         <p>Name: {{ $manush['name'] }} | Email: {{ $manush['email'] }}</p>
         @if ($manush['name'] === 'Ali')
