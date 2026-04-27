@@ -45,7 +45,7 @@ class UserController extends Controller
         $id = $request->input('id');
         $student = Student::find($id);
 
-        if($student){
+        if ($student) {
             return view('findStudent', [
                 'student' => $student,
                 'success' => 'Student found Successfully'
@@ -57,7 +57,8 @@ class UserController extends Controller
         }
     }
 
-    public function countStudent(){
+    public function countStudent()
+    {
         return Student::count();
     }
 
@@ -89,17 +90,44 @@ class UserController extends Controller
         return redirect('/students')->with('success', 'Student Deleted!');
     }
 
-    public function task6(){
+    public function task6()
+    {
         $studentWithAge18 = Student::where('age', '>', 18)->get();
         return $studentWithAge18;
     }
 
-    public function task7(){
+    public function task7()
+    {
         $studentWithnameAli = Student::where('name', 'LIKE', 'Ali')->get();
     }
 
-    public function task9(){
+    public function task9()
+    {
         $studentWithAge18 = Student::where('age', '>', 18)->delete();
+    }
+
+    public function getStudentWithAge18OrAbove()
+    {
+        $students = Student::maturedStudent()->get();
+        return $students;
+    }
+
+    public function getOnlyTwoStudent()
+    {
+        $students = Student::take(2)->get();
+        return $students;
+    }
+
+    public function studentsWithEmail()
+    {
+        $students = Student::whereNotNull('email')->get();
+        return $students;
+    }
+
+    public function studentsEmails()
+    {
+        $emails = Student::pluck('name', 'email');
+        return $emails;
     }
 
 }

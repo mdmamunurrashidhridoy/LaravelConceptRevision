@@ -19,9 +19,14 @@ Route::get('/form', function () {
 
 Route::get('/students/{id}/edit', [UserController::class, 'edit']);
 Route::get('/students', [UserController::class, 'students']);
+Route::get('/students/getMaturedStudent',[UserController::class, 'getStudentWithAge18OrAbove']);
+Route::get('/students/getOnlyTwoStudents', [UserController::class, 'getOnlyTwoStudent']);
 Route::put('/students/{id}', [UserController::class, 'update']);
 Route::delete('/students/{id}', [UserController::class, 'destroy']);
 Route::get('/students/findStudent', function () {
     return view('findStudent');
 });
 Route::post('/students/findStudent', [UserController::class, 'findStudent']);
+Route::get('/studentsEmails',[UserController::class, 'studentsEmails']);
+
+

@@ -11,4 +11,9 @@ class Student extends Model
         'email',
         'age',
     ];
+
+    public function scopeMaturedStudent($query)
+    {
+        return $query->where('age', '>=', 18);
+    }
 }
